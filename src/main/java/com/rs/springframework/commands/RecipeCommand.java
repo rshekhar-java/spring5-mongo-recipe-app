@@ -4,6 +4,7 @@ import com.rs.springframework.domain.Difficulty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -40,7 +41,7 @@ public class RecipeCommand {
 
     private String source;
 
-//    @URL
+    @URL
     private String url;
 
 
