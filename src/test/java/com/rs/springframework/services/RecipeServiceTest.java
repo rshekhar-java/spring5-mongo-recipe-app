@@ -50,7 +50,7 @@ public class RecipeServiceTest {
         testRecipeCommand.setDescription(NEW_DESCRIPTION);
         RecipeCommand savedRecipeCommand = recipeService.saveRecipeCommand(testRecipeCommand);
 
-        //then
+        //then.
         assertEquals(NEW_DESCRIPTION, savedRecipeCommand.getDescription());
         assertEquals(testRecipe.getId(), savedRecipeCommand.getId());
         assertEquals(testRecipe.getCategories().size(), savedRecipeCommand.getCategories().size());
