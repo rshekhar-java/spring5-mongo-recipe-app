@@ -54,11 +54,13 @@ public class IngredientServiceImpl implements IngredientService{
             //todo impl error handling
             log.error("Ingredient Id not found : "+ingredientId);
         }
+        IngredientCommand ingredientCommand = ingredientCommandOptional.get();
+        ingredientCommand.setRecipeId(recipeId);
+
         return ingredientCommandOptional.get();
     }
 
     @Override
-    @Transactional
     public IngredientCommand saveIngredientCommand(IngredientCommand command) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId());
 
@@ -104,12 +106,20 @@ public class IngredientServiceImpl implements IngredientService{
                                 .equals(command.getUnitOfMeasure().getId()))
                         .findFirst();
             }
-            //to do check for fail
-            return ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+//            //to do check for fail
+//            return ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+
 //            return ingredientToIngredientCommand.convert(savedRecipe.getIngredients().stream()
 //                    .filter(recipeIngredients -> recipeIngredients.getId().equals(command.getId()))
 //                            .findFirst()
 //                            .get());
+
+            //to do check for fail
+            //enhance with id value
+            IngredientCommand ingredientCommandSaved = ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+            ingredientCommandSaved.setRecipeId(recipe.getId());
+
+            return ingredientCommandSaved;
         }
     }
 
