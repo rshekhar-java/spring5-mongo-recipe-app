@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * created by rs 1/11/2022.
  */
 //@DataMongoTest
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RecipeServiceTest {
